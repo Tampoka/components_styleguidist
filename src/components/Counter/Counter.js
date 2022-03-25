@@ -10,6 +10,13 @@ const counterStyle = {
 
 
 export class Counter extends React.Component {
+    static propTypes = {
+        initialValue: PropTypes.number
+    }
+    static defaultProps = {
+        initialValue: 5
+    };
+
     constructor(props) {
         super(props);
 
@@ -36,6 +43,7 @@ export class Counter extends React.Component {
             };
         });
     };
+
     render() {
         return (
             <div style={counterStyle} key="counter">
@@ -49,11 +57,4 @@ export class Counter extends React.Component {
     }
 }
 
-Counter.propTypes = {
-    initialValue: PropTypes.number
-};
-
-Counter.defaultProps = {
-    initialValue: 120
-};
 

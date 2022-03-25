@@ -1,22 +1,24 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
+import {Counter} from './Counter';
 
 const counterStyle = {
     width: '50px',
     textAlign: 'center',
-    backgroundColor: 'aliceblue',
+    backgroundColor: '#8bd9ff',
     padding: '10px'
 };
 
-export const Counter1 = ({initialValue}) => {
-    const [value,setValue]=useState(initialValue)
+export const Counter1 = ({initialValue = 120}) => {
+    const [value, setValue] = useState(initialValue)
 
-    const decrement=()=>{
-        const nextState=value-1
+    const decrement = () => {
+        const nextState = value - 1
         setValue(nextState)
     }
 
-    const increment=()=>{
-        const nextState=value+1
+    const increment = () => {
+        const nextState = value + 1
         setValue(nextState)
     }
 
@@ -28,6 +30,10 @@ export const Counter1 = ({initialValue}) => {
                 <button onClick={decrement}>-</button>
             </p>
         </div>
-    );
-};
+    )
+}
+
+Counter.propTypes = {
+    initialValue: PropTypes.number
+}
 
