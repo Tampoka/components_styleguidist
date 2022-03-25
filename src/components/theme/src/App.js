@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {ThemeContext, themes} from './theme';
+import {Header} from './Header';
 
 export const App = () => {
     const [theme, setTheme]=useState(themes.dark)
