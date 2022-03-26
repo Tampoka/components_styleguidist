@@ -1,10 +1,10 @@
 import './App.css';
-import {ThemedApp} from './components/theme/ThemedApp';
+import {Switch} from './components/Switch/Switch';
 
 export default function App() {
   return (
     <div className="AppContainer">
-    <ThemedApp/>
+    <Switch/>
     </div>
   );
 }
