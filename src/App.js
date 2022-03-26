@@ -1,11 +1,10 @@
 import './App.css';
-import {Counter1} from './components/Counter/Counter1';
-import {Counter} from './components/Counter/Counter';
+import {ThemedApp} from './components/theme/ThemedApp';
 
 export default function App() {
   return (
-    <div className="App">
-    <Counter1/>
+    <div className="AppContainer">
+    <ThemedApp/>
     </div>
   );
 }

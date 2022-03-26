@@ -13,3 +13,5 @@ export const themes = {
 
 
 export const ThemeContext = React.createContext(themes.dark)
+/* The default value is used within the consumer in the case that the child component
+ is not wrapped in a ThemeContext.Provider component.*/

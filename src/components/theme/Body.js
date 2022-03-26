@@ -1,18 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
 
 import {ThemeContext} from './theme';
+import {UserContext} from './user';
 
-export const Header = props => (
+export const Body = props => (
     <ThemeContext.Consumer>
         {theme => (
             <header
                 className="App-header"
                 style={{backgroundColor: theme.background}}
             >
-                <img src={logo} className="App-logo" alt="logo"/>
-                <h1 className="App-title" style={{color: theme.foreground}}>
-                    Welcome to React
-                </h1>
+                <UserContext.Consumer>
+                    <h1>{user => (user ? 'Welcome back' : 'Welcome')}</h1>
+                </UserContext.Consumer>
             </header>
         )}
     </ThemeContext.Consumer>
