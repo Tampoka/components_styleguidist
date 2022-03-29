@@ -13,13 +13,15 @@ export const Counter1 = ({initialValue = 120}) => {
     const [value, setValue] = useState(initialValue)
 
     const decrement = () => {
-       /* const nextState = value - 1
-        setValue(nextState)*/
-        setValue(prevState => prevState-1)
+        /* const nextState = value - 1
+         setValue(nextState)*/
+        setValue(prevState => {
+            return prevState - 1
+        })
     }
 
     const increment = () => {
-        setValue(prevState => prevState+1)
+        setValue(prevState => prevState + 1)
     }
 
     return (

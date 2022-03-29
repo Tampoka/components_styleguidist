@@ -5,7 +5,7 @@ import Switch2 from "./steps/Switch2";
 import Switch3 from "./steps/Switch3";
 import Switch4 from "./steps/Switch4";
 import Switch5 from "./steps/Switch5";
-// import Switch6 from "./steps/Switch6";
+import Switch6 from "./steps/Switch6";
 import "./Switch.css";
 
 export const Switch = () => {
@@ -23,7 +23,7 @@ export const Switch = () => {
             {presentStep("Switch3", Switch3)}
             {presentStep("Switch4", Switch4)}
             {presentStep("Switch5", Switch5)}
-            {/*{presentStep("Switch6", Switch6)}*/}
+            {presentStep("Switch6", Switch6)}
         </div>
     );
 }
