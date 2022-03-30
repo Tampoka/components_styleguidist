@@ -21,7 +21,7 @@ export const Choice = ({active, onClick, label}) => {
 const CREDITCARD = "Credit card";
 const BTC = "Bitcoin";
 
- const Switch = () => {
+const Switch = () => {
     const [payMethod, setPayMethod] = useState(BTC)
 
     const select = (choice) => {
@@ -44,3 +44,4 @@ const BTC = "Bitcoin";
 }
 
 export default Switch
+
