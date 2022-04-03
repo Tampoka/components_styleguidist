@@ -1,15 +1,16 @@
 import './App.css';
 import {Switch} from './components/Switch/Switch';
 import {Counter1} from './components/Counter/Counter1';
-import {Container} from './components/Article/Container';
 import {Newspaper} from './components/Article/Newspaper';
+import {container} from './components/forms/forms';
 
 export default function App() {
     return (
         <div className="AppContainer">
-            <Switch/>
+           {/* <Switch/>
             <Counter1/>
-            <Newspaper/>
+            <Newspaper/>*/}
+            {container}
         </div>
     );
 }

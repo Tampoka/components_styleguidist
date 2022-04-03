@@ -1,18 +1,14 @@
 import {Component} from 'react';
 
-
 const content = document.createElement('div');
 document.body.appendChild(content);
 
-export class One extends Component {
-    static displayName = "01-basic-button";
+export class Two extends Component {
+    static displayName = "02-basic-button";
 
-    onGreatClick = (evt) => {
-        console.log('The user clicked button-1: great', evt);
-    };
-
-    onAmazingClick = (evt) => {
-        console.log('The user clicked button-2: amazing', evt);
+    onButtonClick = (evt) => {
+        const btn = evt.target;
+        console.log(`The user clicked ${btn.name}: ${btn.value}`);
     };
 
     render() {
@@ -23,7 +19,7 @@ export class One extends Component {
                 <button
                     name='button-1'
                     value='great'
-                    onClick={this.onGreatClick}
+                    onClick={this.onButtonClick}
                 >
                     Great
                 </button>
@@ -31,7 +27,7 @@ export class One extends Component {
                 <button
                     name='button-2'
                     value='amazing'
-                    onClick={this.onAmazingClick}
+                    onClick={this.onButtonClick}
                 >
                     Amazing
                 </button>
@@ -39,3 +35,4 @@ export class One extends Component {
         );
     }
 };
+
