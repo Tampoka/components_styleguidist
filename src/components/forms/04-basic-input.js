@@ -3,14 +3,18 @@ import {Component, createRef} from 'react';
 const content = document.createElement('div');
 document.body.appendChild(content);
 
-export class Three extends Component {
-    static displayName = "03-basic-input";
+export class Four extends Component {
+    static displayName = "04-basic-input";
 
-    name=createRef()
+    name = createRef()
+    state = {names: []}
 
     onFormSubmit = (evt) => {
+        const name = this.name.current.value
+        const names = [...this.state.names, name]
+        this.setState({names: names})
+        this.name.current.value = ''
         evt.preventDefault()
-        console.log(this.name.current.value)
     };
 
     render() {
@@ -26,6 +30,12 @@ export class Three extends Component {
 
                     <input type='submit'/>
                 </form>
+                <div>
+                    <h3>Names</h3>
+                    <ul>
+                        {this.state.names.map((name, i) => <li key={i}>{name}</li>)}
+                    </ul>
+                </div>
             </div>
         );
     }

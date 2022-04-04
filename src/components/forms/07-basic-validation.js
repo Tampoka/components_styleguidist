@@ -1,0 +1,84 @@
+import {Component} from 'react';
+import isEmail from 'validator/es/lib/isEmail';
+
+const content = document.createElement('div');
+document.body.appendChild(content);
+
+export class Seven extends Component {
+    static displayName = "06-basic-validation";
+
+    state = {
+        fields: {
+            name: '',
+            email: '',
+        },
+        fieldErrors: {},
+        people: []
+    }
+
+    validate = person => {
+        const errors = {}
+        if (!person.name) errors.name = 'Name Required'
+        if (!person.email) errors.email = 'Email Required'
+        if (person.email && !isEmail(person.email)) errors.email = 'Invalid Email'
+        return errors
+    }
+
+    onFormSubmit = evt => {
+        const people = [...this.state.people, this.state.fields];
+        this.setState({
+            people,
+            fields: {
+                name: '',
+                email: '',
+            }
+        });
+        evt.preventDefault()
+    };
+
+    onInputChange = evt => {
+        const fields = Object.assign({}, this.state.fields);
+        fields[evt.target.name] = evt.target.value;
+        this.setState({fields});
+    };
+
+    render() {
+        return (
+            <div>
+                <h1>Sign Up Sheet</h1>
+
+                <form onSubmit={this.onFormSubmit}>
+                    <input
+                        placeholder="Name"
+                        name="name"
+                        value={this.state.fields.name}
+                        onChange={this.onInputChange}
+                    />
+                    <span style={{color: 'red'}}>{this.state.fieldErrors.name}</span>
+                    <br/>
+                    <input
+                        placeholder="Email"
+                        name="email"
+                        value={this.state.fields.email}
+                        onChange={this.onInputChange}
+                    />
+                    <span style={{color: 'red'}}>{this.state.fieldErrors.email}</span>
+                    <br/>
+                    <input type="submit"/>
+                </form>
+
+                <div>
+                    <h3>People</h3>
+                    <ul>
+                        {this.state.people.map(({name, email}, i) => (
+                            <li key={i}>
+                                {name} ({email})
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        );
+    }
+}
+

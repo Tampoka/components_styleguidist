@@ -1,10 +1,13 @@
-import {One} from './01-basic-button.js';
-import {Two} from './02-basic-button.js';
 import {render} from 'react-dom';
 import {createElement} from 'react';
+import {One} from './01-basic-button.js';
+import {Two} from './02-basic-button.js';
 import {Three} from './03-basic-input';
+import {Four} from './04-basic-input';
+import {Five} from './05-state-input';
+import {Six} from './06-state-input-multi';
 
-const routes = [One, Two,Three]
+const routes = [One, Two, Three, Four, Five,Six]
 
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
