@@ -10,14 +10,14 @@ export class Field extends React.Component {
         onChange: PropTypes.func.isRequired
     };
 
+    static getDerivedStateFromProps(nextProps) {
+        return {value: nextProps.value}
+    };
+
     state = {
         value: this.props.value,
         error: false
     };
-
-    getDerivedStateFromProps(nextProps) {
-        return {value: nextProps.value}
-    }
 
     onChange = evt => {
         const name = this.props.name;
