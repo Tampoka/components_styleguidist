@@ -5,7 +5,7 @@ const content = document.createElement('div');
 document.body.appendChild(content);
 
 export class Seven extends Component {
-    static displayName = "06-basic-validation";
+    static displayName = "07-basic-validation";
 
     state = {
         fields: {
@@ -25,15 +25,22 @@ export class Seven extends Component {
     }
 
     onFormSubmit = evt => {
-        const people = [...this.state.people, this.state.fields];
+        const people = [...this.state.people];
+        const person = this.state.fields
+        const fieldErrors = this.validate(person)
+        this.setState({fieldErrors})
+        evt.preventDefault()
+
+        if (Object.keys(fieldErrors).length) return
+
         this.setState({
-            people,
+            people: people.concat(person),
             fields: {
                 name: '',
                 email: '',
             }
         });
-        evt.preventDefault()
+
     };
 
     onInputChange = evt => {
@@ -43,6 +50,8 @@ export class Seven extends Component {
     };
 
     render() {
+        console.log(this.state.fieldErrors)
+
         return (
             <div>
                 <h1>Sign Up Sheet</h1>

@@ -6,8 +6,9 @@ import {Three} from './03-basic-input';
 import {Four} from './04-basic-input';
 import {Five} from './05-state-input';
 import {Six} from './06-state-input-multi';
+import {Seven} from './07-basic-validation';
 
-const routes = [One, Two, Three, Four, Five,Six]
+const routes = [One, Two, Three, Four, Five,Six,Seven]
 
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
