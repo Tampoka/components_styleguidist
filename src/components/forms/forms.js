@@ -2,8 +2,9 @@ import {One} from './01-basic-button.js';
 import {Two} from './02-basic-button.js';
 import {render} from 'react-dom';
 import {createElement} from 'react';
+import {Three} from './03-basic-input';
 
-const routes = [One, Two]
+const routes = [One, Two,Three]
 
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));

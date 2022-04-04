@@ -34,5 +34,5 @@ export class Two extends Component {
             </div>
         );
     }
-};
+}
 
