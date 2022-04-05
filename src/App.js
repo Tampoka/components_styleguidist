@@ -3,6 +3,7 @@ import {Switch} from './components/Switch/Switch';
 import {Counter1} from './components/Counter/Counter1';
 import {Newspaper} from './components/Article/Newspaper';
 import {container} from './components/forms/forms';
+import {FormWithValidation} from './components/FormWithValidation/FormWithValidation';
 
 export default function App() {
     return (
@@ -10,7 +11,8 @@ export default function App() {
            {/* <Switch/>
             <Counter1/>
             <Newspaper/>*/}
-            {container}
+            {/*{container}*/}
+            <FormWithValidation/>
         </div>
     );
 }

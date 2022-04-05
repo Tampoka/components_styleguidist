@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import {Component} from 'react';
 
-export class Field extends React.Component {
+export class Field extends Component {
     static propTypes = {
         placeholder: PropTypes.string,
         name: PropTypes.string.isRequired,
