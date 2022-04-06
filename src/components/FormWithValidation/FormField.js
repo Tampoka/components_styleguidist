@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export const FormField = ({placeholder, value, name, onChange = f => f, validate = f => f}) => {
+export const FormField = ({placeholder, value, name, onChange, validate}) => {
     const [inputValue, setInputValue] = useState(value)
     const [error, setError] = useState(false)
 
@@ -11,8 +11,9 @@ export const FormField = ({placeholder, value, name, onChange = f => f, validate
         setInputValue(value)
         setError(newError)
 
-        onChange({name, inputValue, error: newError})
+        onChange({name, value:inputValue, error: newError})
     }
+    console.log(inputValue)
     return (
         <div>
             <input
