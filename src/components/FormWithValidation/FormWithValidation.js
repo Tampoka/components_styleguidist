@@ -18,8 +18,15 @@ export const FormWithValidation = () => {
     }
 
     const onInputChange = ({name, value, error}) => {
-        setFields({...fields, [name]: value})
-        setFieldErrors({...fieldErrors, [name]: error})
+  /*      setFields({...fields, name: value})
+        setFieldErrors({...fieldErrors, name: error})*/
+        const updatedFields={...fields}
+        const updatedFieldErrors={...fieldErrors}
+        updatedFields[name] = value;
+        updatedFieldErrors[name] = error;
+
+        setFields(updatedFields)
+        setFieldErrors(updatedFieldErrors)
     }
 
     const validate = () => {
@@ -33,6 +40,8 @@ export const FormWithValidation = () => {
 
         return false;
     }
+    console.log(fields)
+    console.log(people)
     return (
         <div>
             <h1>Sign Up Sheet</h1>
