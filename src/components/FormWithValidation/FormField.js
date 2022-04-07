@@ -13,7 +13,6 @@ export const FormField = ({placeholder, value, name, onChange, validate}) => {
 
         onChange({name, value:inputValue, error: newError})
     }
-    console.log(inputValue)
     return (
         <div>
             <input

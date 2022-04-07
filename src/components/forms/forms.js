@@ -1,4 +1,3 @@
-/*
 import {render} from 'react-dom';
 import {createElement} from 'react';
 import {One} from './01-basic-button.js';
@@ -9,8 +8,9 @@ import {Five} from './05-state-input';
 import {Six} from './06-state-input-multi';
 import {Seven} from './07-basic-validation';
 import {Eight} from './08-field-component-form';
+import {CourseSelect} from './09-course-select';
 
-const routes = [One, Two, Three, Four, Five,Six,Seven,Eight]
+const routes = [One, Two, Three, Four, Five,Six,Seven,Eight,CourseSelect]
 
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
@@ -59,4 +59,3 @@ function createRoute(nStr) {
     );
 }
 
-*/

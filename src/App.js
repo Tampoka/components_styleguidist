@@ -11,8 +11,8 @@ export default function App() {
            {/* <Switch/>
             <Counter1/>
             <Newspaper/>*/}
-            {/*{container}*/}
-            <FormWithValidation/>
+            {container}
+            {/*<FormWithValidation/>*/}
         </div>
     );
 }
