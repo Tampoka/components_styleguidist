@@ -1,5 +1,7 @@
 import {Component} from 'react';
 import PropTypes from 'prop-types';
+import Core from '../forms/api/core.json';
+import Electives from '../forms/api/electives.json';
 
 const content = document.createElement('div');
 document.body.appendChild(content);
@@ -7,20 +9,13 @@ document.body.appendChild(content);
 const Courses = {
     core: Core,
     electives: Electives
-}
+};
 
 export class CourseSelect extends Component {
     static propTypes = {
         department: PropTypes.string,
         course: PropTypes.string,
         onChange: PropTypes.func.isRequired
-    }
-
-    static getDerivedStateFromProps(update) {
-        return {
-            department: update.department,
-            course: update.course
-        }
     };
 
     state = {
@@ -28,30 +23,40 @@ export class CourseSelect extends Component {
         course: null,
         courses: [],
         _loading: false
+    };
+
+    static getDerivedStateFromProps(update) {
+        return {
+            department: update.department,
+            course: update.course
+        };
     }
 
     onSelectDepartment = evt => {
-        const department = evt.target.value
-        const course = null
-        this.setState({department, course})
-        this.props.onChange({name: 'department', value: department})
-        this.props.onChange({name: 'course', value: course})
+        const department = evt.target.value;
+        const course = null;
 
-        if (department) this.fetch(department)
-    }
+        this.setState({department, course});
 
-    fetch = department => {
-        this.setState({_loading: true, courses: []})
-        apiClient(department).then(courses => {
-            this.setState({_loading: false, courses: courses})
-        })
-    }
+        this.props.onChange({name: 'department', value: department});
+        this.props.onChange({name: 'course', value: course});
+        console.log(department)
+
+        if (department) this.fetch(department);
+    };
 
     onSelectCourse = evt => {
-        const course = evt.target.value
-        this.setState({course})
-        this.props.onChange({name: 'course', value: course})
-    }
+        const course = evt.target.value;
+        this.setState({course});
+        this.props.onChange({name: 'course', value: course});
+    };
+
+    fetch = department => {
+        this.setState({_loading: true, courses: []});
+        apiClient(department).then(courses => {
+            this.setState({_loading: false, courses: courses});
+        });
+    };
 
     renderDepartmentSelect = () => {
         return (
@@ -63,22 +68,24 @@ export class CourseSelect extends Component {
                 <option value="core">NodeSchool: Core</option>
                 <option value="electives">NodeSchool: Electives</option>
             </select>
-        )
-    }
+        );
+    };
 
     renderCourseSelect = () => {
         if (this.state._loading) {
-            return <img alt="loading" src="/img/loading.gif"/>;
+            return <img alt="loading" src="/img/loading.gif" />;
         }
-        if (!this.state.department || !this.state.courses.length) return <span/>
+        if (!this.state.department || !this.state.courses.length) return <span />;
+
         return (
             <select
                 onChange={this.onSelectCourse}
-                value={this.state.course || ''}
-            >
-                {[<option value="" key="course-none">
-                    Which course?>
-                </option>,
+                value={this.state.course || ''}>
+                {[
+                    <option value="" key="course-none">
+                        Which course?
+                    </option>,
+
                     ...this.state.courses.map((course, i) => (
                         <option value={course} key={i}>
                             {course}
@@ -86,19 +93,19 @@ export class CourseSelect extends Component {
                     ))
                 ]}
             </select>
-        )
-    }
+        );
+    };
 
     render() {
         return (
             <div>
                 {this.renderDepartmentSelect()}
-                <br/>
+                <br />
                 {this.renderCourseSelect()}
             </div>
-        );
+        )
     }
-}
+};
 
 function apiClient(department) {
     return {
