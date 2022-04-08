@@ -26,15 +26,15 @@ export const CourseSelectField = (props) => {
 
     const onSelectDepartment = evt => {
         const updatedDepartment = evt.target.value;
-        const updatedCourse = null;
+        // const updatedCourse = null;
 
         setDepartment(updatedDepartment)
         setCourse(null)
 
         props.onChange({name: 'department', value: updatedDepartment});
-        props.onChange({name: 'course', value: updatedCourse});
+       // props.onChange({name: 'course', value: updatedCourse});
 
-        if (updatedDepartment) fetch(updatedDepartment);
+        if (updatedDepartment) fetch(updatedDepartment)
     };
 
     const onSelectCourse = evt => {

@@ -23,11 +23,21 @@ export const FormWithSelect = () => {
     }
 
     const onInputChange = ({name, value, error}) => {
-        const updatedFields = {...fields}
-        const updatedFieldErrors = {...fieldErrors}
+        const updatedFields = {
+            ...fields,
+            [name]: value
+        }
+        const updatedFieldErrors = {
+            ...fieldErrors,
+            [name]: error
+        }
 
-        updatedFields[name] = value;
-        updatedFieldErrors[name] = error;
+        if(name === 'department'){
+            updatedFields.course = null
+        }
+
+        console.log(name)
+        console.log(updatedFields)
 
         setFields(updatedFields)
         setFieldErrors(updatedFieldErrors)
