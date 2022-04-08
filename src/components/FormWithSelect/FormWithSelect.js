@@ -36,9 +36,6 @@ export const FormWithSelect = () => {
             updatedFields.course = null
         }
 
-        console.log(name)
-        console.log(updatedFields)
-
         setFields(updatedFields)
         setFieldErrors(updatedFieldErrors)
     }
