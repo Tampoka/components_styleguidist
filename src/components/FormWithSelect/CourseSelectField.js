@@ -26,21 +26,20 @@ export const CourseSelectField = (props) => {
 
     const onSelectDepartment = evt => {
         const updatedDepartment = evt.target.value;
-        // const updatedCourse = null;
 
         setDepartment(updatedDepartment)
         setCourse(null)
 
         props.onChange({name: 'department', value: updatedDepartment});
-       // props.onChange({name: 'course', value: updatedCourse});
+        // props.onChange({name: 'course', value: null});
 
         if (updatedDepartment) fetch(updatedDepartment)
     };
 
     const onSelectCourse = evt => {
-        const course = evt.target.value;
-        setCourse(course);
-        props.onChange({name: 'course', value: course});
+        const updatedCourse = evt.target.value;
+        setCourse(updatedCourse);
+        props.onChange({name: 'course', value: updatedCourse});
     };
 
     const fetch = department => {
@@ -69,7 +68,7 @@ export const CourseSelectField = (props) => {
         if (loading) {
             return <img alt="loading" src="/img/loading.gif"/>;
         }
-        // if (!props.department || !courses.length) return <span/>;
+        if (!props.department || !courses.length) return <span/>;
 
         return (
             <select

@@ -40,7 +40,6 @@ export class CourseSelect extends Component {
 
         this.props.onChange({name: 'department', value: department});
         this.props.onChange({name: 'course', value: course});
-        console.log(department)
 
         if (department) this.fetch(department);
     };

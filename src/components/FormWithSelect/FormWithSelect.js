@@ -13,7 +13,6 @@ export const FormWithSelect = () => {
 
     const onFormSubmit = evt => {
         const person = {...fields}
-        console.log(person)
         evt.preventDefault()
 
         if (validate()) return
@@ -32,9 +31,8 @@ export const FormWithSelect = () => {
             [name]: error
         }
 
-        if(name === 'department'){
-            updatedFields.course = null
-        }
+        if (name === 'department') updatedFields.course = null
+
 
         setFields(updatedFields)
         setFieldErrors(updatedFieldErrors)

@@ -12,9 +12,9 @@ export default function App() {
            {/* <Switch/>
             <Counter1/>
             <Newspaper/>*/}
-            {/*{container}*/}
+            {container}
             {/*<FormWithValidation/>*/}
-            <FormWithSelect/>
+            {/*<FormWithSelect/>*/}
         </div>
     );
 }

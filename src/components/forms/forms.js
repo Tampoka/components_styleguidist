@@ -1,4 +1,3 @@
-/*
 import {render} from 'react-dom';
 import {createElement} from 'react';
 import {One} from './01-basic-button.js';
@@ -10,8 +9,9 @@ import {Six} from './06-state-input-multi';
 import {Seven} from './07-basic-validation';
 import {Eight} from './08-field-component-form';
 import {Nine} from './09-async-fetch';
+import {Ten} from './10-remote-persist';
 
-const routes = [One, Two, Three, Four, Five,Six,Seven,Eight,Nine]
+const routes = [One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten]
 
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
@@ -41,7 +41,7 @@ function createRoute(nStr) {
     if (i > routes.length - 1) i = routes.length - 1;
 
     const navStyle = {
-        position: 'fixed', bottom: 50, textAlign: 'center', left: '10%'
+        position: 'fixed', textAlign: 'center', left: '50%',marginTop:50
     };
     const isFirst = i <= 0;
     const isLast = i >= routes.length - 1;
@@ -60,4 +60,3 @@ function createRoute(nStr) {
     );
 }
 
-*/
