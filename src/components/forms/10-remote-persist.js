@@ -28,9 +28,6 @@ const apiClient = {
             }, 1000)
         })
     },
-    // deletePerson:function(){
-    //     localStorage.
-    // },
     count: 1
 }
 
@@ -114,6 +111,12 @@ export class Ten extends React.Component {
         return false;
     };
 
+    onRemoveButtonClick = (name) => {
+        const updatedPeople = this.state.people.filter(p => p.name !== name)
+        this.setState({people: updatedPeople})
+        localStorage.people = JSON.stringify(updatedPeople)
+    }
+
     render() {
         if (this.state.loading) {
             return <img alt="loading" src="/img/loading.gif"/>;
@@ -178,7 +181,8 @@ export class Ten extends React.Component {
                     <ul>
                         {this.state.people.map(({name, email, department, course}, i) => (
                             <li key={i}>
-                               <button>X</button> {[name, email, department, course].join(' - ')}
+                                <button onClick={()=>this.onRemoveButtonClick(name)}>X</button>
+                                {[name, email, department, course].join(' - ')}
                             </li>
                         ))}
                     </ul>
