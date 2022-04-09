@@ -28,9 +28,9 @@ const apiClient = {
             }, 1000)
         })
     },
-    deletePerson:function(){
-        localStorage.
-    },
+    // deletePerson:function(){
+    //     localStorage.
+    // },
     count: 1
 }
 
@@ -71,7 +71,7 @@ export class Ten extends React.Component {
             .savePeople(people)
             .then(() => {
                 this.setState({
-                    people: people.concat(person),
+                    people: people,
                     fields: {
                         name: '',
                         email: '',
