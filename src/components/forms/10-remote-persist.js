@@ -18,7 +18,7 @@ const apiClient = {
     },
     savePeople: function (people) {
         const success = !!(this.count++ % 2)
-
+        console.log(this.count)
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (!success) return reject({success})
@@ -27,6 +27,9 @@ const apiClient = {
                 return resolve({success})
             }, 1000)
         })
+    },
+    updatePeople:function(updatedPeople){
+        localStorage.people = JSON.stringify(updatedPeople)
     },
     count: 1
 }
@@ -114,7 +117,7 @@ export class Ten extends React.Component {
     onRemoveButtonClick = (name) => {
         const updatedPeople = this.state.people.filter(p => p.name !== name)
         this.setState({people: updatedPeople})
-        localStorage.people = JSON.stringify(updatedPeople)
+        apiClient.updatePeople(updatedPeople)
     }
 
     render() {
@@ -181,7 +184,7 @@ export class Ten extends React.Component {
                     <ul>
                         {this.state.people.map(({name, email, department, course}, i) => (
                             <li key={i}>
-                                <button onClick={()=>this.onRemoveButtonClick(name)}>X</button>
+                                <button onClick={() => this.onRemoveButtonClick(name)}>X</button>
                                 {[name, email, department, course].join(' - ')}
                             </li>
                         ))}

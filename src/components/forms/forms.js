@@ -18,9 +18,9 @@ window.addEventListener('hashchange', location.reload.bind(location));
 const loc = location.hash.replace('#/', '');
 const element = loc ? createRoute(loc) : createTOC();
 
-export const container = document.createElement('div');
-document.body.appendChild(container);
-render(element, container);
+export const forms = document.createElement('div');
+document.body.appendChild(forms);
+render(element, forms);
 
 function createTOC() {
     return (

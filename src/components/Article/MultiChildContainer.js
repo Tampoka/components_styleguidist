@@ -16,7 +16,7 @@ export class MultiChildContainer extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="forms">
                 {Children.map(this.props.children, this.renderChild)}
             </div>
         )
