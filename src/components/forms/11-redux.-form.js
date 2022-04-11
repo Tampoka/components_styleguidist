@@ -9,25 +9,22 @@ document.body.appendChild(content);
 
 export class Eleven extends React.Component {
     static displayName = '11-redux-form';
-    static propTypes={
-        people:PropTypes.array.isRequired,
-        isLoading:PropTypes.bool.isRequired,
+    static propTypes = {
+        people: PropTypes.array.isRequired,
+        isLoading: PropTypes.bool.isRequired,
         saveStatus: PropTypes.string.isRequired,
-        fields:PropTypes.object,
-        onSubmit:PropTypes.func.isRequired
+        fields: PropTypes.object,
+        onSubmit: PropTypes.func.isRequired
     }
 
     state = {
-        fields: {
+        fields: this.props.fields || {
             name: '',
             email: '',
             course: null,
             department: null
         },
         fieldErrors: {},
-        people: [],
-        loading: false,
-        saveStatus: 'READY'
     };
 
     componentDidMount() {
