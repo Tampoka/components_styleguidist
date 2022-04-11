@@ -4,10 +4,7 @@ import {Field} from './08-field-component-field';
 import {CourseSelectField} from '../FormWithSelect/CourseSelectField';
 import PropTypes from 'prop-types';
 
-const content = document.createElement('div');
-document.body.appendChild(content);
-
-export class Eleven extends React.Component {
+export class Form extends React.Component {
     static displayName = '11-redux-form';
     static propTypes = {
         people: PropTypes.array.isRequired,
@@ -27,11 +24,11 @@ export class Eleven extends React.Component {
         fieldErrors: {},
     }
 
-    static getDerivedStateFromProps(update) {
-        console.log('this.props.fields', this.props.fields.update)
-
-        return {fields: update.fields}
-    }
+/*    static getDerivedStateFromProps(nextProps, prevState) {
+        if (prevState.fields !== nextProps.fields) {
+            return {fields: nextProps.fields}
+            }
+    }*/
 
     onFormSubmit = evt => {
         const person = this.state.fields;
@@ -41,7 +38,14 @@ export class Eleven extends React.Component {
         if (this.validate()) return;
 
         this.props.onSubmit([...this.props.people, person])
-
+        this.setState({
+            fields: {
+                name: '',
+                email: '',
+                course: null,
+                department: null
+            }
+        })
     };
 
     onInputChange = ({name, value, error}) => {
@@ -137,7 +141,7 @@ export class Eleven extends React.Component {
                 <div>
                     <h3>People</h3>
                     <ul>
-                        {this.state.people.map(({name, email, department, course}, i) => (
+                        {this.props.people.map(({name, email, department, course}, i) => (
                             <li key={i}>
                                 <button onClick={() => this.onRemoveButtonClick(name)}>X</button>
                                 {[name, email, department, course].join(' - ')}

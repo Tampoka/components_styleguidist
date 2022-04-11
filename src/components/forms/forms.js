@@ -10,8 +10,9 @@ import {Seven} from './07-basic-validation';
 import {Eight} from './08-field-component-form';
 import {Nine} from './09-async-fetch';
 import {Ten} from './10-remote-persist';
+import {Eleven} from './11-redux-app';
 
-const routes = [One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten]
+const routes = [One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Eleven]
 
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
@@ -41,7 +42,7 @@ function createRoute(nStr) {
     if (i > routes.length - 1) i = routes.length - 1;
 
     const navStyle = {
-        position: 'fixed', textAlign: 'center', left: '50%',marginTop:50
+        position: 'fixed', textAlign: 'center', left: '50%', marginTop: 50
     };
     const isFirst = i <= 0;
     const isLast = i >= routes.length - 1;
