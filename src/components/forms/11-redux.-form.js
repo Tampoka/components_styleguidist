@@ -25,13 +25,12 @@ export class Eleven extends React.Component {
             department: null
         },
         fieldErrors: {},
-    };
+    }
 
-    componentDidMount() {
-        this.setState({loading: true})
-        apiClient.loadPeople().then(people => {
-            this.setState({loading: false, people: people})
-        })
+    static getDerivedStateFromProps(update) {
+        console.log('this.props.fields', this.props.fields.update)
+
+        return {fields: update.fields}
     }
 
     onFormSubmit = evt => {
@@ -41,27 +40,8 @@ export class Eleven extends React.Component {
 
         if (this.validate()) return;
 
-        const people = [...this.state.people, person]
+        this.props.onSubmit([...this.props.people, person])
 
-        this.setState({saveStatus: 'SAVING'})
-        apiClient
-            .savePeople(people)
-            .then(() => {
-                this.setState({
-                    people: people,
-                    fields: {
-                        name: '',
-                        email: '',
-                        course: null,
-                        department: null
-                    },
-                    saveStatus: 'SUCCESS'
-                });
-            })
-            .catch(err => {
-                console.log(err)
-                this.setState({saveStatus: 'ERROR'})
-            })
     };
 
     onInputChange = ({name, value, error}) => {
@@ -74,7 +54,7 @@ export class Eleven extends React.Component {
         if (name === 'department') fields.course = null
 
 
-        this.setState({fields, fieldErrors, saveStatus: 'READY'});
+        this.setState({fields, fieldErrors});
     };
 
     validate = () => {
@@ -91,17 +71,15 @@ export class Eleven extends React.Component {
         return false;
     };
 
-    onRemoveButtonClick = (name) => {
-        const updatedPeople = this.state.people.filter(p => p.name !== name)
-        this.setState({people: updatedPeople})
-        apiClient.updatePeople(updatedPeople)
-    }
-
     render() {
-        if (this.state.loading) {
+        if (this.props.isLoading) {
             return <img alt="loading" src="/img/loading.gif"/>;
         }
-        console.log(this.state.fields)
+
+        const dirty = Object.keys(this.state.fields).length
+        let status = this.props.saveStatus
+        if (status === 'SUCCESS' && dirty) status = 'READY'
+
         return (
             <div>
                 <h1>Sign Up Sheet</h1>
@@ -152,7 +130,7 @@ export class Eleven extends React.Component {
                                     disabled={this.validate()}
                                 />
                             )
-                        }[this.state.saveStatus]
+                        }[status]
                     }
                 </form>
 
