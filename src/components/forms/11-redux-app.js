@@ -20,7 +20,7 @@ export class Eleven extends Component{
     render() {
         return (
             <Provider store={store}>
-                <ReduxForm key={this.props.fields}/>
+                <ReduxForm />
             </Provider>
         )
     }
